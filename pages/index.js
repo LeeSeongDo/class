@@ -11,7 +11,7 @@ export default function Home() {
       </Head>
 
       <div>이 글자가 잘 나오는지 확인</div>
-      <a href="../section01/Example/Example">이동하기</a>
+      <a href="../section01/01-01-example/Example">이동하기</a>
     </>
   );
 }
