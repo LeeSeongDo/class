@@ -8,3 +8,5 @@
 </a>
 
 # 11월 16일
+- <a href="https://www.notion.so/Day3-7bc2e4a8d4bd40ceb4e7c3f1c85543f7?pvs=4">섹션 06 데이터 통신, restAPI, gtaphql-API
+</a>
