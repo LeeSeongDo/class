@@ -2,6 +2,7 @@ import {
     Address,
     ButtonWrapper,
     Contents,
+    ErrorText,
     ImageWrapper,
     InputWrapper,
     Label,
@@ -37,15 +38,53 @@ import {
     });
     const [youtube, setYoutube] = useState('');
 
+    const [writeError, setWriteError] = useState('');
+    const [passwordError, setPasswordError] = useState('');
+    const [titleError, setTitleError] = useState('');
+    const [contentsError, setContentsError] = useState('');
+
     function CheckValues()  {
-       if(writer.length === 0 || password.length === 0 || title.length === 0 || contents.length === 0 || address.mainAdd === '' || address.subAdd === '' || address.number === '' || youtube === '')
+       if(!writer)
        {
-        console.log('실패')
-       } else {
-         console.log('성공');
-         
+         setWriteError("이름을 입력해주세요");
+       }
+
+       if(!password)
+       {
+        setPasswordError("비밀번호를 입력해주세요");
+       }
+
+       if(!title)
+       {
+        setTitleError("제목을 입력해주세요");
+       }
+
+       if(!contents)
+       {
+        setContentsError("내용을 입력해주세요")
        }
     }
+
+    const writeWriter = (e) => {
+        setWriter(e.target.value);
+        setWriteError('');
+    }
+
+    const writePassword = (e) => {
+        setPassword(e.target.value);
+        setPasswordError('');
+    }
+
+    const writeTitle = (e) => {
+        setTitle(e.target.value);
+        setTitleError('');
+    }
+
+    const writeContents = (e) => {
+        setContents(e.target.value);
+        setContentsError('');
+    }
+
 
     return (
       <Wrapper>
@@ -53,20 +92,24 @@ import {
         <WriterWrapper>
           <InputWrapper>
             <Label>작성자</Label>
-            <Writer type="text" placeholder="이름을 적어주세요." onChange={(e) => setWriter(e.target.value)} />
+            <Writer type="text" placeholder="이름을 적어주세요." onChange={writeWriter} />
+            <ErrorText>{writeError}</ErrorText>
           </InputWrapper>
           <InputWrapper>
             <Label>비밀번호</Label>
-            <Password type="password" placeholder="비밀번호를 작성해주세요." onChange={(e) => setPassword(e.target.value)}/>
+            <Password type="password" placeholder="비밀번호를 작성해주세요." onChange={writePassword}/>
+            <ErrorText>{passwordError}</ErrorText>
           </InputWrapper>
         </WriterWrapper>
         <InputWrapper>
           <Label>제목</Label>
-          <Subject type="text" placeholder="제목을 작성해주세요." onChange={(e) => setTitle(e.target.value)}/>
+          <Subject type="text" placeholder="제목을 작성해주세요." onChange={writeTitle}/>
+          <ErrorText>{titleError}</ErrorText>
         </InputWrapper>
         <InputWrapper>
           <Label>내용</Label>
-          <Contents placeholder="내용을 작성해주세요." onChange={(e) => setContents(e.target.value)} />
+          <Contents placeholder="내용을 작성해주세요." onChange={writeContents}/>
+          <ErrorText>{contentsError}</ErrorText>
         </InputWrapper>
         <InputWrapper>
           <Label>주소</Label>

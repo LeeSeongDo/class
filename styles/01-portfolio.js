@@ -164,6 +164,11 @@ export const SubmitButton = styled.button`
   margin-left: 12px;
   margin-right: 12px;
   cursor: pointer;
-
   background-color: yellow;
 `;
+
+export const ErrorText = styled.p`
+  color: red;
+  font-size: 12px;
+  font-weight: 500;
+`
