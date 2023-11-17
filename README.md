@@ -12,3 +12,8 @@
 
 - <a href="https://www.notion.so/Day3-7bc2e4a8d4bd40ceb4e7c3f1c85543f7?pvs=4">섹션 06 데이터 통신, restAPI, gtaphql-API
   </a>
+
+# 11월 17일
+
+- <a href="https://www.notion.so/Day4-a7e961b3c69b4d8f92e54f0d50aeecfb">섹션 07 rest-api, graphql vscode에서 사용해보기
+  </a>
