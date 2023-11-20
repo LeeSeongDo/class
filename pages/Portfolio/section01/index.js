@@ -52,21 +52,7 @@ export default function BoardsNewPage() {
   const [contentsError, setContentsError] = useState("");
   const [createBoard] = useMutation(CREATE_BOARD);
 
-  const onClickSubmit = async () => {
-    const result = await createBoard({
-      variables: {
-        createBoardInput: {
-          writer: writer,
-          title: title,
-          contents: contents,
-          password: password,
-        },
-      },
-    });
-    console.log(result);
-  };
-
-  function CheckValues() {
+  let CheckValues = async () => {
     if (!writer) {
       setWriteError("이름을 입력해주세요");
     }
@@ -83,15 +69,20 @@ export default function BoardsNewPage() {
       setContentsError("내용을 입력해주세요");
     }
 
-    if (
-      writer.length > 0 &&
-      password.length > 0 &&
-      title.length > 0 &&
-      contents.length > 0
-    ) {
-      onClickSubmit();
+    if (writer && password && title && contents) {
+      const result = await createBoard({
+        variables: {
+          createBoardInput: {
+            writer: writer,
+            title: title,
+            contents: contents,
+            password: password,
+          },
+        },
+      });
+      console.log(result);
     }
-  }
+  };
 
   const writeWriter = (e) => {
     setWriter(e.target.value);
