@@ -17,3 +17,15 @@
 
 - <a href="https://www.notion.so/Day4-a7e961b3c69b4d8f92e54f0d50aeecfb">섹션 07 rest-api, graphql vscode에서 사용해보기
   </a>
+
+  # 11월 20일
+
+  섹션 08 수강
+
+  # 11월 21일
+
+  섹션 09 수강
+
+  # 11월 22일
+
+  섹션 08 & 09 과제 수행
