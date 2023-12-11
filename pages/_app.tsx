@@ -22,9 +22,7 @@ export default function App({ Component, pageProps }) {
       {!isHidden && <HeaderArea />}
       <Navigation />
       <ApolloSetting>
-        <Global styles={globalStyles}>
-          <Component {...pageProps} />
-        </Global>
+        <Component {...pageProps} />
       </ApolloSetting>
       <Footer />
     </div>
