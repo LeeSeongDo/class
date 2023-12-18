@@ -50,3 +50,5 @@
   # 12월 4일
 
 - <a href="https://www.notion.so/Day13-31bdfadc4f9b4591b96221dfb1b8625c?pvs=4">섹션 16
+
+- <a href="https://www.notion.so/Day16-d34158ee1d664df291bba0028a8eb04f?pvs=4">섹션 20
