@@ -29,6 +29,6 @@
 
 - <a href="https://www.notion.so/Day16-d34158ee1d664df291bba0028a8eb04f?pvs=4">섹션 20
 
-- <a href="https://www.notion.so/Day15-0dd719df241b48d29524152fddec5844?pvs=4">섹션 21
+- <a href="https://www.notion.so/Day15-0dd719df241b48d29524152fddec5844?pvs=4">섹션 21 백엔드의 이해
 
-- <a href="https://www.notion.so/Day18-0ab550f60c644d46a4451c9a5a03f1ec?pvs=4">섹션 22
+- <a href="https://www.notion.so/Day18-0ab550f60c644d46a4451c9a5a03f1ec?pvs=4">섹션 22 이미지 업로드

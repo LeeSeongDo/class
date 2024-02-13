@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import ApolloSetting from "../src/components/commons/Apollo";
 import { Global } from "@emotion/react";
 import { globalStyles } from "../src/commons/styles/globalStyles";
+import { RecoilRoot } from "recoil";
 
 const HIDDEN_HEADER = [
   "/section11/11-01-eventbubbling",
@@ -21,9 +22,11 @@ export default function App({ Component, pageProps }) {
     <div>
       {!isHidden && <HeaderArea />}
       <Navigation />
-      <ApolloSetting>
-        <Component {...pageProps} />
-      </ApolloSetting>
+      <RecoilRoot>
+        <ApolloSetting>
+          <Component {...pageProps} />
+        </ApolloSetting>
+      </RecoilRoot>
       <Footer />
     </div>
   );
