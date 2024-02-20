@@ -5,14 +5,21 @@ import {
   InMemoryCache,
 } from "@apollo/client";
 import { createUploadLink } from "apollo-upload-client";
+import { accessTokenState } from "../../../commons/stores";
+import { useRecoilState } from "recoil";
 
 interface IApolloSettingProps {
   children: JSX.Element;
 }
 
 export default function ApolloSetting(props: IApolloSettingProps): JSX.Element {
+  const [accessToken] = useRecoilState(accessTokenState);
+
   const UPLOAD_LINK = createUploadLink({
     uri: "http://backend-practice.codebootcamp.co.kr/graphql",
+    headers: {
+      Authorization: `Baerer ${accessToken}`,
+    },
   });
 
   const client = new ApolloClient({
