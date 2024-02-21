@@ -2,23 +2,18 @@
 import { gql, useQuery } from "@apollo/client";
 import type { IQuery } from "../../../src/commons/types/generate/types";
 
+// loginsuccess 폴더의 index.tsx
 const FETCH_USER_LOGGED_IN = gql`
-  query {
+  query fetchUserLoggedIn {
     fetchUserLoggedIn {
       email
       name
     }
   }
 `;
+export default function LoginSuccessPage() {
+  const { data } =
+    useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER_LOGGED_IN);
 
-export default function LoginSuccess(): JSX.Element {
-  const { data } = useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER_LOGGED_IN);
-
-  console.log(data);
-  
-  return (
-    <div>
-      <span>님 환영합니다.</span>
-    </div>
-  );
+  return <div>{data?.fetchUserLoggedIn.name}님 환영합니다.</div>;
 }

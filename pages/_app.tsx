@@ -7,6 +7,8 @@ import ApolloSetting from "../src/components/commons/Apollo";
 import { Global } from "@emotion/react";
 import { globalStyles } from "../src/commons/styles/globalStyles";
 import { RecoilRoot } from "recoil";
+import { useState } from "react";
+import { createUploadLink } from "apollo-upload-client";
 
 const HIDDEN_HEADER = [
   "/section11/11-01-eventbubbling",
@@ -15,8 +17,8 @@ const HIDDEN_HEADER = [
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
+
   const isHidden = HIDDEN_HEADER.includes(router.asPath);
-  console.log(router.asPath);
 
   return (
     <div>
