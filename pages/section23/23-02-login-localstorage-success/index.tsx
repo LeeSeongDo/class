@@ -12,9 +12,10 @@ const FETCH_USER_LOGGED_IN = gql`
 `;
 
 export default function LoginSuccess(): JSX.Element {
-  const { data } =
-    useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER_LOGGED_IN);
+  const { data } = useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER_LOGGED_IN);
 
+  console.log(data);
+  
   return (
     <div>
       <span>님 환영합니다.</span>
