@@ -13,7 +13,12 @@ interface IApolloSettingProps {
 }
 
 export default function ApolloSetting(props: IApolloSettingProps): JSX.Element {
-  const [accessToken] = useRecoilState(accessTokenState);
+  const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
+
+  if (process.browser) {
+    const result = localStorage.getItem("accessToken");
+    setAccessToken(result ?? ""); // 만약 값이 없다면 빈 문자열을 저장해줍니다.
+  }
 
   const uploadLink = createUploadLink({
     uri: "http://backend-practice.codebootcamp.co.kr/graphql",

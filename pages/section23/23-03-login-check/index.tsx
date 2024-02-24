@@ -53,7 +53,7 @@ export default function LoginPage() {
         localStorage.setItem("accessToken", accessToken); // key value값으로 저장합니다. | 좋은 방법이 아니니 이번 수업 빼고 사용하지 말아주세요.
       }
 
-      router.push("/section23/23-02-login-localstorage-success");
+      router.push("/section23/23-03-login-check-success");
     } catch (error) {
       // 오류 발생시 alert 발생
       if (error instanceof Error) alert(error.message);
