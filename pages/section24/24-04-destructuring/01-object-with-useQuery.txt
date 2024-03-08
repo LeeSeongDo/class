@@ -1,0 +1,58 @@
+function useQuery() {
+    
+}
+undefined
+function useQuery() {
+
+}
+undefined
+function useQuery() {
+
+    return {
+        data: {fetchBoard: {writer: "철수"}},
+    }
+}
+
+const {} = useQuery("FETCH_BOARDS")
+undefined
+function useQuery() {
+
+    return {
+        data: {fetchBoard: {writer: "철수"}},
+        refetc: () => {
+            console.log("리패치가 실행됩니다!!")
+        }
+    }
+}
+
+const {data, refetch} = useQuery("FETCH_BOARDS")
+undefined
+data.writer
+undefined
+data.{writer}
+VM647:1 Uncaught SyntaxError: Unexpected token '{'
+data.fetchBoard.writer
+'철수'
+data.refetc
+undefined
+data.refetc();
+VM767:1 Uncaught TypeError: data.refetc is not a function
+    at <anonymous>:1:6
+refetch
+undefined
+function useQuery() {
+
+    return {
+        data: {fetchBoard: {writer: "철수"}},
+        refetch: () => {
+            console.log("리패치가 실행됩니다!!")
+        }
+    }
+}
+
+const {data, refetch} = useQuery("FETCH_BOARDS")
+undefined
+refetch
+() => {
+            console.log("리패치가 실행됩니다!!")
+        }
