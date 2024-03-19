@@ -7,7 +7,7 @@ import {
 import { createUploadLink } from "apollo-upload-client";
 import { accessTokenState } from "../../../commons/stores";
 import { useRecoilState } from "recoil";
-
+import { useEffect } from "react";
 interface IApolloSettingProps {
   children: JSX.Element;
 }
@@ -16,8 +16,8 @@ export default function ApolloSetting(props: IApolloSettingProps): JSX.Element {
   const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
 
   if (process.browser) {
-    const result = localStorage.getItem("accessToken");
-    setAccessToken(result ?? ""); // 만약 값이 없다면 빈 문자열을 저장해줍니다.
+    const result = localStorage.getItem("accessToken"); // 만약 값이 없다면 빈 문자열을 저장해줍니다.
+     setAccessToken(result ?? "");
   }
 
   const uploadLink = createUploadLink({
