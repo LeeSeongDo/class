@@ -1,0 +1,40 @@
+<!-- 첫번째 API 주소 -->
+<!-- `http://numbersapi.com/random?min=1&max=200` -->
+
+<!-- 두번째 API 주소 -->
+<!-- `https://koreanjson.com/posts/${num}` -->
+
+<!-- 세번째 API 주소 -->
+<!-- `https://koreanjson.com/posts?userId=${userId}` -->
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Callback 실습</title>
+    <script>
+
+        const onClickCallBack = () => {
+            const aaa = new XMLHttpRequest(); // 초기 세팅입니다.
+            aaa.open("get", `http://numbersapi.com/random?min=1&max=200`); // 준비완료 단계 입니다. GET OR POST중 하나를 선택하고 API 주소를 적어주세요
+            aaa.send() // 보내주세요 
+            aaa.addEventListener("load", (res) => {
+                console.log(res.loaded); // API 요청 결과입니다.
+            }) // 값이 불러와지면 콜백 함수로 넘겨진 값을 return!
+        }
+
+        const onClickPromise = () => {
+
+        }
+
+        const onClickAsyncAwait = () => {
+
+        }
+    </script>
+</head>
+<body>
+    callback 실습입니다.
+    <button onclick="onClickCallBack()">CALL BACK!</button>
+    <button onclick="onClickPromise()">PROMISE!!</button>
+    <button onclick="onClickAsyncAwait()">ASYNC / AWAIT !</button>
+</body>
+</html>
