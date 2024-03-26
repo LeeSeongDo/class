@@ -9,32 +9,88 @@
 
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <title>Callback 실습</title>
-    <script>
+    <head>
+        <title>Callback 실습</title>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <!-- axios 가져오기 -->
+        <script>
+            const onClickCallBack = () => {
+                const aaa = new XMLHttpRequest(); // 초기 세팅입니다.
+                aaa.open("get", `http://numbersapi.com/random?min=1&max=200`); // 준비완료 단계 입니다. GET OR POST중 하나를 선택하고 API 주소를 적어주세요
+                aaa.send(); // 보내주세요
+                aaa.addEventListener("load", (res) => {
+                    const num = res.target.response.split("")[0]; // API 요청 결과입니다.
+                    console.log(num);
 
-        const onClickCallBack = () => {
-            const aaa = new XMLHttpRequest(); // 초기 세팅입니다.
-            aaa.open("get", `http://numbersapi.com/random?min=1&max=200`); // 준비완료 단계 입니다. GET OR POST중 하나를 선택하고 API 주소를 적어주세요
-            aaa.send() // 보내주세요 
-            aaa.addEventListener("load", (res) => {
-                console.log(res.loaded); // API 요청 결과입니다.
-            }) // 값이 불러와지면 콜백 함수로 넘겨진 값을 return!
-        }
+                    const bbb = new XMLHttpRequest(); // 초기 세팅입니다.
+                    bbb.open("get", `https://koreanjson.com/posts/${num}`); // 준비완료 단계 입니다. GET OR POST중 하나를 선택하고 API 주소를 적어주세요
+                    bbb.send(); // 보내주세요
+                    bbb.addEventListener("load", (res) => {
+                        const userId = JSON.parse(res.target.response).UserId; // 작성자 ID
 
-        const onClickPromise = () => {
+                        const ccc = new XMLHttpRequest(); // 초기 세팅입니다.
+                        ccc.open("get", `https://koreanjson.com/posts?userId=${userId}`); // 준비완료 단계 입니다. GET OR POST중 하나를 선택하고 API 주소를 적어주세요
+                        ccc.send(); // 보내주세요
+                        ccc.addEventListener("load", (res) => {
+                            console.log(res);
+                        });
+                    });
+                }); // 값이 불러와지면 콜백 함수로 넘겨진 값을 return!
+            };
 
-        }
+            // new Promise((성공했을때실행할함수, 실패했을때실행할함수) => {
+            //     // 여기서 API 요청을 한다면???
+            //     try {
+            //         const response = "철수" // 철수를 가져왔다고 가정하고
+            //         성공했을때실행할함수(); // 성공함수 실행
+            //     } catch(error) {
+            //         console.log(error);
+            //         실패했을때실행할함수(error);
+            //     }
+            // }).then((qqq) => {
+            //     // 성공시킨 값이 qqq
+            //     // console.log(qqq) => 철수
+            // }).catch((rrr) => {
+            //     // console.log(rrr); // error 출력.
+            // });
 
-        const onClickAsyncAwait = () => {
+            const onClickPromise = () => {
+                axios
+                    .get(`http://numbersapi.com/random?min=1&max=200`)
+                    .then((res) => {
+                        const num = res.data.split("")[0];
+                        return axios.get(`https://koreanjson.com/posts/${num}`);
+                    })
+                    .then((res) => {
+                        const userId = res.data.UserId;
+                        return axios.get(`https://koreanjson.com/posts?userId=${userId}`);
+                    })
+                    .then((res) => {
+                        console.log(res);
+                    });
+            };
 
-        }
-    </script>
-</head>
-<body>
-    callback 실습입니다.
-    <button onclick="onClickCallBack()">CALL BACK!</button>
-    <button onclick="onClickPromise()">PROMISE!!</button>
-    <button onclick="onClickAsyncAwait()">ASYNC / AWAIT !</button>
-</body>
+            // axios, fetch => 대표적인 Promise를 지원하는 기능.
+            // axios, fetch를 기다리는 2가지 방법
+            // 1. .then을 사용하기
+            // 2. await를 활용하기
+
+            const onClickAsyncAwait = async () => {
+                const First = await axios.get(`http://numbersapi.com/random?min=1&max=200`);
+                const num = First.data.split("")[0];
+
+                const Second = await axios.get(`https://koreanjson.com/posts/${num}`);
+                const userId = Second.data.UserId;
+
+                const Third = await axios.get(`https://koreanjson.com/posts?userId=${userId}`);
+                const BoardList = Third.data; // 이 사용자의 게시물 리스트.
+            };
+        </script>
+    </head>
+    <body>
+        callback 실습입니다.
+        <button onclick="onClickCallBack()">CALL BACK!</button>
+        <button onclick="onClickPromise()">PROMISE!!</button>
+        <button onclick="onClickAsyncAwait()">ASYNC / AWAIT !</button>
+    </body>
 </html>
